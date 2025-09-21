@@ -1,0 +1,193 @@
+
+body {
+  font-family: Arial, sans-serif;
+  margin: 0;
+  padding: 20px;
+  background: #f5f8fa;
+  color: #333;
+  display: flex;
+  gap: 20px;
+}
+
+#form-container {
+  flex: 1;
+  max-width: 600px;
+}
+
+#preview-container {
+  flex: 1;
+  position: sticky;
+  top: 20px;
+  height: fit-content;
+}
+
+form,
+#resume-preview {
+  background: white;
+  padding: 30px;
+  border-radius: 10px;
+  box-shadow: 0 3px 10px rgba(0, 0, 0, 0.1);
+  margin-bottom: 20px;
+}
+
+#resume-preview {
+  display: block;
+  min-height: 1000px;
+}
+
+label {
+  display: block;
+  margin-top: 15px;
+  font-weight: bold;
+}
+
+input.form-input,
+select.form-input,
+textarea.form-input {
+  width: 100%;
+  padding: 8px 12px;
+  margin-top: 6px;
+  border: 1.8px solid #ccc;
+  border-radius: 5px;
+  font-size: 1rem;
+  resize: vertical;
+}
+
+button {
+  margin-top: 20px;
+  background: #4a90e2;
+  color: white;
+  border: none;
+  padding: 12px 20px;
+  font-size: 1.1rem;
+  border-radius: 6px;
+  cursor: pointer;
+}
+
+button:hover {
+  background: #357abd;
+}
+
+.section {
+  margin-bottom: 25px;
+}
+
+#resume-preview h1 {
+  font-size: 2rem;
+  color: #2a5d9f;
+  margin-bottom: 5px;
+}
+
+#resume-preview h3 {
+  font-size: 1.2rem;
+  color: #4a90e2;
+  border-bottom: 2px solid #e0e0e0;
+  padding-bottom: 5px;
+  margin-bottom: 15px;
+}
+
+#resume-preview ul {
+  padding-left: 20px;
+}
+
+#res-name {
+  color: #4a90e2;
+  font-size: 30px;
+}
+
+.edu-entry {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  flex-wrap: wrap;
+  margin-bottom: 12px;
+}
+
+.edu-left {
+  flex: 1;
+  min-width: 250px;
+}
+
+#res-degree,
+#res-stream-school,
+#res-stream-degree {
+  font-weight: bold;
+}
+
+.edu-right {
+  text-align: right;
+  min-width: 180px;
+  font-size: 0.95rem;
+  color: #555;
+  line-height: 1.4;
+}
+
+#res-skills {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 8px 16px;
+  padding-left: 0;
+  list-style: disc inside;
+}
+
+#res-achievements {
+  padding-left: 18px;
+  list-style: square;
+}
+
+.project-entry,
+.experience-entry {
+  margin-bottom: 20px;
+  padding-bottom: 20px;
+  border-bottom: 1px dashed #eee;
+}
+
+.add-btn {
+  background: #4CAF50;
+  margin: 10px 0;
+  padding: 8px 15px;
+  font-size: 0.9rem;
+}
+
+.add-btn:hover {
+  background: #3e8e41;
+}
+
+.remove-btn {
+  background: #f44336;
+  margin-left: 10px;
+  padding: 8px 15px;
+  font-size: 0.9rem;
+}
+
+.remove-btn:hover {
+  background: #d32f2f;
+}
+
+#projects-container .project-entry:last-child,
+#experiences-container .experience-entry:last-child {
+  border-bottom: none;
+  margin-bottom: 0;
+  padding-bottom: 0;
+}
+
+.download-btn {
+  background: #673AB7;
+  margin-top: 20px;
+  width: 100%;
+}
+
+.download-btn:hover {
+  background: #5E35B1;
+}
+
+@media (max-width: 1000px) {
+  body {
+      flex-direction: column;
+  }
+  
+  #form-container,
+  #preview-container {
+      max-width: 100%;
+  }
+}

@@ -1,0 +1,355 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Simple Resume Builder</title>
+<link href="resume.css" rel="stylesheet" >
+</head>
+<body>
+
+<div id="form-container">
+  <form id="resume-form">
+    <div class="section">
+      <h3>Personal Details</h3>
+      <label for="name">Name</label>
+      <input type="text" id="name" class="form-input" required />
+      <label for="email">Email</label>
+      <input type="email" id="email" class="form-input" required />
+      <label for="phno">Phone Number</label>
+      <input type="tel" id="phno" class="form-input" placeholder="1234567890"/>
+    </div>
+
+    <div class="section">
+      <h3>Career Objective</h3>
+      <textarea id="objective" class="form-input" rows="4" placeholder="Write your career objective here..." required></textarea>
+    </div>
+
+    <div class="section">
+      <h3>Education - College/University</h3>
+      <label for="uname">College Name</label>
+      <input type="text" id="uname" class="form-input" required />
+      <label for="degree">Degree</label>
+      <select id="degree" class="form-input" required>
+        <option value="">--Select Degree--</option>
+        <option>B.Tech</option>
+        <option>M.Tech</option>
+        <option>B.Ba</option>
+        <option>B.Sc</option>
+        <option>MBA</option>
+        <option>Others</option>
+      </select>
+      <label for="stream-degree">Stream</label>
+      <input type="text" id="stream-degree" class="form-input" placeholder="e.g. Computer Science" required />
+      <label for="start-college">Start Year</label>
+      <input type="number" id="start-college" class="form-input" min="1950" max="2100" required />
+      <label for="end-college">End Year</label>
+      <input type="number" id="end-college" class="form-input" min="1950" max="2100" required />
+      <label for="college-grade">CGPA / Percentage</label>
+      <input type="text" id="college-grade" class="form-input" placeholder="e.g. 8.5 CGPA or 85%" />
+    </div>
+
+    <div class="section">
+      <h3>Education - Intermediate / Secondary</h3>
+      <label for="school-name">School Name</label>
+      <input type="text" id="school-name" class="form-input" required />
+      <label for="stream-school">Stream</label>
+      <input type="text" id="stream-school" class="form-input" placeholder="e.g. MPC, BPC, Commerce" required />
+      <label for="start-school">Start Year</label>
+      <input type="number" id="start-school" class="form-input" min="1950" max="2100" required />
+      <label for="end-school">End Year</label>
+      <input type="number" id="end-school" class="form-input" min="1950" max="2100" required />
+      <label for="school-grade">CGPA / Percentage</label>
+      <input type="text" id="school-grade" class="form-input" placeholder="e.g. 9.0 CGPA or 90%" />
+    </div>
+
+    <div class="section">
+      <h3>Projects <button type="button" id="add-project" class="add-btn">+ Add Project</button></h3>
+      <div id="projects-container">
+        <div class="project-entry">
+          <label>Project Title</label>
+          <input type="text" class="form-input project-title" required />
+          <label>Description</label>
+          <textarea class="form-input project-desc" rows="4" required></textarea>
+          <label>Project Link (optional)</label>
+          <input type="url" class="form-input project-link" placeholder="https://yourprojectlink.com" />
+        </div>
+      </div>
+    </div>
+
+    <div class="section">
+      <h3>Work Experience <button type="button" id="add-experience" class="add-btn">+ Add Experience</button></h3>
+      <div id="experiences-container">
+        <div class="experience-entry">
+          <label>Company Name</label>
+          <input type="text" class="form-input company-name" />
+          <label>Role/Position</label>
+          <input type="text" class="form-input role" />
+          <label>Start Year</label>
+          <input type="number" class="form-input start-year" min="1950" max="2100" />
+          <label>End Year</label>
+          <input type="number" class="form-input end-year" min="1950" max="2100" />
+        </div>
+      </div>
+    </div>
+
+    <div class="section">
+      <h3>Skills</h3>
+      <label for="skills">Skills (comma separated)</label>
+      <input type="text" id="skills" class="form-input" placeholder="e.g. HTML, CSS, JS, Python" required />
+    </div>
+
+    <div class="section">
+      <h3>Achievements</h3>
+      <label for="achievements">Achievements (comma separated)</label>
+      <input type="text" id="achievements" class="form-input" placeholder="e.g. Coding contest winner, Published paper" />
+    </div>
+
+    <button type="submit">Update Resume</button>
+  </form>
+</div>
+
+<div id="preview-container">
+  <div id="resume-preview">
+    <section>
+      <h1><span id="res-name">Your Name</span></h1>
+      <p><span id="res-email">your.email@example.com</span>, <span id="res-phone">+1 234-567-8901</span></p>
+    </section>
+  
+    <section>
+      <h3>Career Objective</h3>
+      <p id="res-objective">
+        Your career objective will appear here.
+      </p>
+    </section>
+  
+    <section>
+      <h3>Education</h3>
+      <div class="edu-entry">
+        <div class="edu-left">
+          <span id="res-degree">Degree</span>, <span id="res-stream-degree">Stream</span><br />
+          <span id="res-college">University/College Name</span>
+        </div>
+        <div class="edu-right">
+          <span><span id="res-start-college">Start</span> - <span id="res-end-college">End</span></span><br />
+          <span id="res-college-grade">Grade</span>
+        </div>
+      </div>
+      <div class="edu-entry">
+        <div class="edu-left">
+          <span id="res-stream-school">Stream</span><br />
+          <span id="res-school">School Name</span>
+        </div>
+        <div class="edu-right">
+          <span><span id="res-start-school">Start</span> - <span id="res-end-school">End</span></span><br />
+          <span id="res-school-grade">Grade</span>
+        </div>
+      </div>
+    </section>
+  
+    <section id="res-experiences">
+      <h3>Work Experience</h3>
+      <div class="experience-item">
+        <p><strong><span class="res-company">Company Name</span></strong> - <span class="res-role">Your Role</span></p>
+        <p><span class="res-exp-years">2020 - 2023</span></p>
+      </div>
+    </section>
+  
+    <section id="res-projects">
+      <h3>Projects</h3>
+      <div class="project-item">
+        <p><strong>Title:</strong> <span class="res-project-title">Project Name</span></p>
+        <p><strong>Description:</strong> <span class="res-project-desc">Project description goes here.</span></p>
+        <p><strong>Link:</strong> <a href="#" class="res-project-link" target="_blank">Project link if available</a></p>
+      </div>
+    </section>
+  
+    <section>
+      <h3>Skills</h3>
+      <ul id="res-skills">
+        <li>Your skills will appear here</li>
+      </ul>
+    </section>
+  
+    <section>
+      <h3>Achievements</h3>
+      <ul id="res-achievements">
+        <li>Your achievements will appear here</li>
+      </ul>
+    </section>
+  </div>
+  <button id="download-resume" class="download-btn">Download Resume as PDF</button>
+</div>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.10.1/html2pdf.bundle.min.js"></script>
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+    const form = document.getElementById('resume-form');
+    const projectsContainer = document.getElementById('projects-container');
+    const experiencesContainer = document.getElementById('experiences-container');
+    const addProjectBtn = document.getElementById('add-project');
+    const addExperienceBtn = document.getElementById('add-experience');
+    const downloadBtn = document.getElementById('download-resume');
+
+    addProjectBtn.addEventListener('click', function() {
+        const projectEntry = document.createElement('div');
+        projectEntry.className = 'project-entry';
+        projectEntry.innerHTML = `
+            <button type="button" class="remove-btn">Remove</button>
+            <label>Project Title</label>
+            <input type="text" class="form-input project-title" required />
+            <label>Description</label>
+            <textarea class="form-input project-desc" rows="4" required></textarea>
+            <label>Project Link (optional)</label>
+            <input type="url" class="form-input project-link" placeholder="https://yourprojectlink.com" />
+        `;
+        projectsContainer.appendChild(projectEntry);
+        
+        projectEntry.querySelector('.remove-btn').addEventListener('click', function() {
+            projectsContainer.removeChild(projectEntry);
+            updateResume();
+        });
+        
+        const inputs = projectEntry.querySelectorAll('input, textarea');
+        inputs.forEach(input => {
+            input.addEventListener('input', updateResume);
+        });
+    });
+
+    addExperienceBtn.addEventListener('click', function() {
+        const experienceEntry = document.createElement('div');
+        experienceEntry.className = 'experience-entry';
+        experienceEntry.innerHTML = `
+            <button type="button" class="remove-btn">Remove</button>
+            <label>Company Name</label>
+            <input type="text" class="form-input company-name" />
+            <label>Role/Position</label>
+            <input type="text" class="form-input role" />
+            <label>Start Year</label>
+            <input type="number" class="form-input start-year" min="1950" max="2100" />
+            <label>End Year</label>
+            <input type="number" class="form-input end-year" min="1950" max="2100" />
+        `;
+        experiencesContainer.appendChild(experienceEntry);
+        
+        experienceEntry.querySelector('.remove-btn').addEventListener('click', function() {
+            experiencesContainer.removeChild(experienceEntry);
+            updateResume();
+        });
+        
+        const inputs = experienceEntry.querySelectorAll('input');
+        inputs.forEach(input => {
+            input.addEventListener('input', updateResume);
+        });
+    });
+
+    const formInputs = form.querySelectorAll('input, textarea, select');
+    formInputs.forEach(input => {
+        input.addEventListener('input', updateResume);
+    });
+
+    downloadBtn.addEventListener('click', function() {
+        const element = document.getElementById('resume-preview');
+        const opt = {
+            margin: 10,
+            filename: 'resume.pdf',
+            image: { type: 'jpeg', quality: 0.98 },
+            html2canvas: { scale: 2 },
+            jsPDF: { unit: 'mm', format: 'a4', orientation: 'portrait' }
+        };
+        html2pdf().from(element).set(opt).save();
+    });
+
+    updateResume();
+
+    function updateResume() {
+        document.getElementById('res-name').textContent = document.getElementById('name').value.trim() || 'Your Name';
+        document.getElementById('res-email').textContent = document.getElementById('email').value.trim() || 'your.email@example.com';
+        document.getElementById('res-phone').textContent = document.getElementById('phno').value.trim() || '+1 234-567-8901';
+        document.getElementById('res-objective').textContent = document.getElementById('objective').value.trim() || 'Your career objective will appear here.';
+        document.getElementById('res-college').textContent = document.getElementById('uname').value.trim() || 'University/College Name';
+        document.getElementById('res-degree').textContent = document.getElementById('degree').value || 'Degree';
+        document.getElementById('res-stream-degree').textContent = document.getElementById('stream-degree').value.trim() || 'Stream';
+        document.getElementById('res-start-college').textContent = document.getElementById('start-college').value || 'Start';
+        document.getElementById('res-end-college').textContent = document.getElementById('end-college').value || 'End';
+        document.getElementById('res-college-grade').textContent = document.getElementById('college-grade').value.trim() || 'Grade';
+        document.getElementById('res-school').textContent = document.getElementById('school-name').value.trim() || 'School Name';
+        document.getElementById('res-stream-school').textContent = document.getElementById('stream-school').value.trim() || 'Stream';
+        document.getElementById('res-start-school').textContent = document.getElementById('start-school').value || 'Start';
+        document.getElementById('res-end-school').textContent = document.getElementById('end-school').value || 'End';
+        document.getElementById('res-school-grade').textContent = document.getElementById('school-grade').value.trim() || 'Grade';
+
+        const projectEntries = document.querySelectorAll('.project-entry');
+        const resProjectsContainer = document.getElementById('res-projects');
+        while (resProjectsContainer.children.length > 1) {
+            resProjectsContainer.removeChild(resProjectsContainer.lastChild);
+        }
+
+        projectEntries.forEach((entry, index) => {
+            const title = entry.querySelector('.project-title').value.trim();
+            const desc = entry.querySelector('.project-desc').value.trim();
+            const link = entry.querySelector('.project-link').value.trim();
+
+            if (index === 0 && !title && !desc) {
+                return;
+            }
+
+            const projectItem = document.createElement('div');
+            projectItem.className = 'project-item';
+            projectItem.innerHTML = `
+                <p><strong>Title:</strong> <span class="res-project-title">${title || 'Project Name'}</span></p>
+                <p><strong>Description:</strong> <span class="res-project-desc">${desc || 'Project description goes here.'}</span></p>
+                ${link ? `<p><strong>Link:</strong> <a href="${link}" class="res-project-link" target="_blank">${link}</a></p>` : ''}
+            `;
+            resProjectsContainer.appendChild(projectItem);
+        });
+
+        const experienceEntries = document.querySelectorAll('.experience-entry');
+        const resExperiencesContainer = document.getElementById('res-experiences');
+        while (resExperiencesContainer.children.length > 1) {
+            resExperiencesContainer.removeChild(resExperiencesContainer.lastChild);
+        }
+
+        experienceEntries.forEach((entry, index) => {
+            const company = entry.querySelector('.company-name').value.trim();
+            const role = entry.querySelector('.role').value.trim();
+            const startYear = entry.querySelector('.start-year').value.trim();
+            const endYear = entry.querySelector('.end-year').value.trim();
+
+            if (index === 0 && !company && !role) {
+                return;
+            }
+
+            const expItem = document.createElement('div');
+            expItem.className = 'experience-item';
+            expItem.innerHTML = `
+                <p><strong><span class="res-company">${company || 'Company Name'}</span></strong> - <span class="res-role">${role || 'Your Role'}</span></p>
+                <p><span class="res-exp-years">${startYear || 'Start'} - ${endYear || 'End'}</span></p>
+            `;
+            resExperiencesContainer.appendChild(expItem);
+        });
+
+        const skillsRaw = document.getElementById('skills').value.trim();
+        const skillsList = skillsRaw ? skillsRaw.split(',').map(s => s.trim()).filter(s => s) : ['Your skills will appear here'];
+        const skillsUl = document.getElementById('res-skills');
+        skillsUl.innerHTML = '';
+        skillsList.forEach(skill => {
+            const li = document.createElement('li');
+            li.textContent = skill;
+            skillsUl.appendChild(li);
+        });
+
+        const achRaw = document.getElementById('achievements').value.trim();
+        const achList = achRaw ? achRaw.split(',').map(s => s.trim()).filter(s => s) : ['Your achievements will appear here'];
+        const achUl = document.getElementById('res-achievements');
+        achUl.innerHTML = '';
+        achList.forEach(ach => {
+            const li = document.createElement('li');
+            li.textContent = ach;
+            achUl.appendChild(li);
+        });
+    }
+});
+</script>
+</body>
+</html>
